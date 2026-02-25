@@ -2,19 +2,16 @@ name: Build Docker Image
 
 on:
   push:
-    branches: [ main ]
+    branches:
+      - main
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
-    defaults:
-      run:
-        working-directory: intermediate/Full-DevOps/src
-
     steps:
-    - name: Checkout code
+    - name: Checkout repository
       uses: actions/checkout@v3
 
     - name: Build Docker image
-      run: docker build -t devops-app .
+      run: docker build -t devops-app ./intermediate/Full-DevOps/src
